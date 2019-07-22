@@ -1,0 +1,47 @@
+# applications
+
+super + Return
+	urxvtc
+
+super + q
+	google-chrome-stable
+
+# wm navigation
+
+super + {h, j, k, l}
+	bspc node -f {west, south, north, east}
+
+super + shift + {h, j, k, l}
+	bspc node -p {west, south, north, east}
+
+# desktop navigation
+
+super + {1-9,0}
+	bspc desktop -f ^{1-9,10}
+
+# window control
+
+super + shift + {c, k}
+	bspc node -{c,k}
+
+super + shift + {1-9,0}
+	bspc node -d ^{1-9,10}
+
+super + alt + {h, j, k, l}
+	bspc node @parent -r {-64,+64,-64,+64}
+
+super + f
+	bspc node -t '~fullscreen'
+
+# wm control
+
+super + shift + q
+	bspc quit
+
+# backlight control
+
+XF86MonBrightnessDown
+	xbacklight -dec 10
+
+XF86MonBrightnessUp
+	xbacklight -inc 10

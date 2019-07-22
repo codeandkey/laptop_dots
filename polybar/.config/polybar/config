@@ -1,0 +1,133 @@
+[colors]
+background = #00000000
+foreground = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/main]
+width = 100%
+height = 96
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+border-size = 0
+
+padding-left = 0
+padding-right = 7
+module-margin-left = 1
+module-margin-right = 1
+
+override-redirect = true
+
+font-0 = TerminessTTF Nerd Font Mono:size=20:style=Medium
+font-1 = TerminessTTF Nerd Font Mono:size=20:style=Medium
+font-2 = TerminessTTF Nerd Font Mono:size=20:style=Medium
+
+modules-left =
+modules-center = bspwm
+modules-right = xbacklight alsa wlan battery date
+
+tray-position = right
+tray-padding = 2
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %name%
+label-occupied =
+label-urgent =
+label-empty = 
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = 
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = ${colors.foreground}
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #228a91
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground}
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = 直 <label-connected>
+label-connected = %local_ip%
+
+format-disconnected = 睊
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+label = %date% %time%
+
+[module/alsa]
+type = internal/alsa
+
+format-volume = <label-volume> <bar-volume>
+label-volume = 墳
+label-volume-foreground = ${root.foreground}
+
+format-muted-foreground = ${colors.foreground}
+label-muted = ﱝ
+
+bar-volume-width = 10
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-fill-foreground = #228a91
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = ﮣ <label-charging>
+format-discharging = <animation-discharging> <label-discharging>
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground}
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground}
+animation-discharging-framerate = 750
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
